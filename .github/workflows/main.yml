@@ -11,19 +11,16 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - name: Install uv
-        uses: astral-sh/setup-uv@v10.1.0
-        with:
-          python-version: "3.14"
+        uses: astral-sh/setup-uv@v5
       - name: Install dependencies
-        run: uv sync
+        run: cd viikko2/nhl-reader && uv sync
       - name: Run tests
-        run: uv run coverage run --branch -m pytest
+        run: cd viikko2/nhl-reader && uv run coverage run --branch -m pytest
       - name: Coverage report
-        run: uv run coverage xml
+        run: cd viikko2/nhl-reader && uv run coverage xml
       - name: Coverage report to Codecov
         uses: codecov/codecov-action@v5
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - name: Run Pylint
-        run: uv run pylint src
-          
+        run: cd viikko2/nhl-reader && uv run pylint src
