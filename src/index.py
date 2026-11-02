@@ -9,7 +9,7 @@ def main():
     huono = Varasto(-100.0)
     huono = Varasto(100.0, -50.7)
     olutta.lisaa_varastoon(1000.0)
-    print(huono)
+    print(huono, "a")
 
 
 if __name__ == "__main__":
